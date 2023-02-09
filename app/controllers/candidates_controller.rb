@@ -1,6 +1,6 @@
 class CandidatesController < ApplicationController
   def index
-
+    @candidates = Candidate.all
   end
 
   def new
@@ -16,6 +16,10 @@ class CandidatesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @candidate = Candidate.find_by(id: params[:id])
   end
 
   private
