@@ -22,6 +22,21 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.find_by(id: params[:id])
   end
 
+  def edit
+    @candidate = Candidate.find_by(id: params[:id])
+  end
+
+  def update
+    @candidate = Candidate.find_by(id: params[:id])
+    if @candidate.update(clean_params)
+      flash[:notice] = "新增成功"
+      render :show
+    else
+      flash[:notice] = "新增失敗"
+      render :show
+    end
+  end
+
   private
   def clean_params
     params.require(:candidate).permit(:name, :age, :party, :politics)

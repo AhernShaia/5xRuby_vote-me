@@ -15,7 +15,7 @@
             <td><%= link_to candidate.name, candidate_path(candidate.id) %></td>
             <td><%= candidate.age %></td>
             <td><%= candidate.party %></td>
-            <td> Action </td>
+            <td><%= link_to "更新候選人資料", edit_candidate_path(candidate.id) %> </td>
         </tr>
     <% end %>
 </table>
