@@ -7,6 +7,7 @@
         <td>年齡</td>
         <td>黨派</td>
         <td>Action</td>
+        <td></td>
     </tr>
 
 
@@ -16,6 +17,8 @@
             <td><%= candidate.age %></td>
             <td><%= candidate.party %></td>
             <td><%= link_to "更新候選人資料", edit_candidate_path(candidate.id) %> </td>
+            <td><%= link_to "刪除", candidate_path(candidate.id), method: "DELETE", :data => {:confirm => 'Are you sure?'} %>
+            </td>
         </tr>
     <% end %>
 </table>

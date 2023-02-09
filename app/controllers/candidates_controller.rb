@@ -37,6 +37,15 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def destroy
+    @candidate = Candidate.find_by(id: params[:id])
+    if @candidate.destroy
+      redirect_to '/candidates'
+      flash[:notice] = "刪除成功"
+      else
+      end
+  end
+
   private
   def clean_params
     params.require(:candidate).permit(:name, :age, :party, :politics)
