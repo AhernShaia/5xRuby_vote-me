@@ -3,6 +3,8 @@
 <h1>Candidates</h1>
 <table>
     <tr>
+        <td>投票</td>
+        <td>票數</td>
         <td>姓名</td>
         <td>年齡</td>
         <td>黨派</td>
@@ -13,12 +15,13 @@
 
     <% @candidates.each do | candidate | %>
         <tr>
+            <td><%= link_to '投票', vote_candidate_path(candidate.id), method: "POST" %></td>
+            <td><%= candidate.votes %></td>
             <td><%= link_to candidate.name, candidate_path(candidate.id) %></td>
             <td><%= candidate.age %></td>
             <td><%= candidate.party %></td>
             <td><%= link_to "更新候選人資料", edit_candidate_path(candidate.id) %> </td>
-            <td><%= link_to "刪除", candidate_path(candidate.id), method: "DELETE", :data => {:confirm => 'Are you sure?'} %>
-            </td>
+            <td><%= link_to "刪除", candidate_path(candidate.id), method: "DELETE", data: {confirm: 'Are you sure?'} %></td>
         </tr>
     <% end %>
 </table>

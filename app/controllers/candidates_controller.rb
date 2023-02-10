@@ -26,6 +26,14 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.find_by(id: params[:id])
   end
 
+  def vote
+    @candidate = Candidate.find_by(id: params[:id])
+    @candidate.increment(:votes)
+    @candidate.save
+
+    redirect_to '/candidates'
+  end
+
   def update
     @candidate = Candidate.find_by(id: params[:id])
     if @candidate.update(clean_params)
